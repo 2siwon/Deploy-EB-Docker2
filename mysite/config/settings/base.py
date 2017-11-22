@@ -13,7 +13,7 @@ import json
 import os
 
 # Paths
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
@@ -38,6 +38,8 @@ MEDIA_URL = '/media/'
 AWS_ACCESS_KEY_ID = config_secret['aws']['aws_access_key_id']
 AWS_SECRET_ACCESS_KEY = config_secret['aws']['aws_secret_access_key']
 AWS_STORAGE_BUCKET_NAME = config_secret['aws']['s3_bucket_name']
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'ap-northeast-2'
 
 # AWS Storage
 STATICFILES_LOCATION = 'static'
@@ -66,7 +68,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Others
 WSGI_APPLICATION = 'config.wsgi.application'
-DATABASES = config_secret['django']['databases']
 
 # Djangos settings
 INSTALLED_APPS = [
@@ -85,6 +86,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'storages',
 ]
+
+# databases
+DATABASES = config_secret['django']['databases']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
